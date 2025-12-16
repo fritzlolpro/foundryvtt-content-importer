@@ -3821,6 +3821,93 @@ function actorToPF2e(actor) {
     };
 }
 
+/**
+ * Convert a PF2eStrike to a Foundry Item (Melee type)
+ * Strikes in PF2e are represented as "melee" items
+ */
+function strikeToMeleeItem(strike, actorLevel) {
+    // Parse damage formula: "1d10+4 piercing" -> { damage: "1d10+4", damageType: "piercing" }
+    const damageParts = strike.damage?.split(' ') || [];
+    const damageFormula = damageParts[0] || '1d4';
+    const damageType = damageParts[1] || 'bludgeoning';
+    return {
+        name: strike.name,
+        type: 'melee',
+        system: {
+            description: {
+                value: strike.description || '',
+            },
+            action: 'strike',
+            bonus: {
+                value: strike.attackBonus || 0,
+            },
+            damageRolls: {
+                '0': {
+                    damage: damageFormula,
+                    damageType: damageType,
+                    category: null,
+                },
+            },
+            traits: {
+                value: strike.traits || [],
+                otherTags: [],
+            },
+            // Set range for ranged attacks
+            ...(strike.description?.toLowerCase().includes('ranged')
+                ? {
+                    range: {
+                        increment: 10,
+                        max: null,
+                    },
+                }
+                : {}),
+            attackEffects: {
+                value: [], // Effects like "Grab" would go here
+            },
+        },
+    };
+}
+/**
+ * Convert a PF2eFeature to a Foundry Item (Action type)
+ * Features/abilities are represented as "action" items in PF2e
+ */
+function featureToActionItem(feature) {
+    // Map action cost to PF2e action values
+    let actionType = 'passive';
+    let actionValue = null;
+    if (feature.actionCost !== undefined) {
+        if (typeof feature.actionCost === 'number') {
+            actionType = 'action';
+            actionValue = feature.actionCost;
+        }
+        else if (feature.actionCost === 'reaction') {
+            actionType = 'reaction';
+        }
+        else if (feature.actionCost === 'free') {
+            actionType = 'free';
+        }
+    }
+    return {
+        name: feature.name,
+        type: 'action',
+        system: {
+            description: {
+                value: feature.description || '',
+            },
+            actionType: {
+                value: actionType,
+            },
+            actions: {
+                value: actionValue,
+            },
+            traits: {
+                value: feature.traits || [],
+                otherTags: [],
+            },
+        },
+    };
+}
+
 let dndPacks = null;
 let otherPacks = null;
 const getItemFromPackAsync = async (pack, itemName) => {
@@ -4000,9 +4087,21 @@ async function txtRoutePF2e(stringData) {
             return;
         }
         console.log('Successfully created PF2e actor:', foundryActor.name);
+        // Create Items for strikes (Melee/Ranged attacks)
+        if (actor.strikes && actor.strikes.length > 0) {
+            console.log(`Creating ${actor.strikes.length} strikes...`);
+            const strikeItems = actor.strikes.map(strike => strikeToMeleeItem(strike, actor.level));
+            await foundryActor.createEmbeddedDocuments('Item', strikeItems);
+            console.log('Strikes created successfully');
+        }
+        // Create Items for features/abilities
+        if (actor.features && actor.features.length > 0) {
+            console.log(`Creating ${actor.features.length} features...`);
+            const featureItems = actor.features.map(feature => featureToActionItem(feature));
+            await foundryActor.createEmbeddedDocuments('Item', featureItems);
+            console.log('Features created successfully');
+        }
         ui.notifications?.info(`Successfully imported PF2e creature: ${foundryActor.name}`);
-        // TODO: Add item support for PF2e when needed
-        // Currently focused on basic stat block parsing
     }
     catch (error) {
         console.error('=== PF2e Import Error ===');

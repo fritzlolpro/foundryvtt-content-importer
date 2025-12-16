@@ -2,6 +2,7 @@ import { textToActor } from './parsers';
 import { textToPF2eActor } from './parsers/pf2eIndex';
 import { actorToFifth, spellsToSpellSlots } from './convert';
 import { actorToPF2e } from './convertPF2e';
+import { strikeToMeleeItem, featureToActionItem } from './convertPF2eItems';
 import { UserData } from '../importForm';
 import { FifthItem } from './templates/fifthedition';
 import { itemToFifth, spellToFifth } from '../item/convert';
@@ -89,10 +90,24 @@ async function txtRoutePF2e(stringData: string) {
     }
     
     console.log('Successfully created PF2e actor:', foundryActor.name);
-    ui.notifications?.info(`Successfully imported PF2e creature: ${foundryActor.name}`);
 
-    // TODO: Add item support for PF2e when needed
-    // Currently focused on basic stat block parsing
+    // Create Items for strikes (Melee/Ranged attacks)
+    if (actor.strikes && actor.strikes.length > 0) {
+      console.log(`Creating ${actor.strikes.length} strikes...`);
+      const strikeItems = actor.strikes.map(strike => strikeToMeleeItem(strike, actor.level));
+      await foundryActor.createEmbeddedDocuments('Item', strikeItems);
+      console.log('Strikes created successfully');
+    }
+
+    // Create Items for features/abilities
+    if (actor.features && actor.features.length > 0) {
+      console.log(`Creating ${actor.features.length} features...`);
+      const featureItems = actor.features.map(feature => featureToActionItem(feature));
+      await foundryActor.createEmbeddedDocuments('Item', featureItems);
+      console.log('Features created successfully');
+    }
+
+    ui.notifications?.info(`Successfully imported PF2e creature: ${foundryActor.name}`);
   } catch (error) {
     console.error('=== PF2e Import Error ===');
     console.error('Error details:', error);
