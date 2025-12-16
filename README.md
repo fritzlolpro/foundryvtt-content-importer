@@ -319,7 +319,7 @@ goods.csv
 11-12|Cloth
 ```
 
-## Actors (5e only)
+## Actors (5e and Pathfinder 2e only)
 
 Actors can be created by copying the text of a mosnter block into the clipboard
 tool.
@@ -327,6 +327,7 @@ tool.
 The tool is designed to handle several standard formats of monster blocks, and
 attempts to resolve as many elements as possible into Foundry Actor items.
 
+### DND
 An example monster block could look like the below Swashbuckler:
 
 
@@ -368,6 +369,26 @@ ft. or range 20/60 ft., one target. Hit: 6 (1d4 + 4) piercing
 damage.
 Rapier. Melee Weapon Attack: +6 to hit, reach 5 ft., one target.
 Hit: 8 (1d8 + 4) piercing damage.
+```
+
+### Pathfinder 2e
+
+```txt
+CROCODILE CREATURE 2
+N LARGE ANIMAL
+Perception +7; low-light vision
+Skills Athletics +8, Stealth +7 (+11 in water)
+Str +4, Dex +1, Con +3, Int -5, Wis +1, Cha –4
+Deep Breath The crocodile can hold its breath for about 2 hours.
+AC 18; Fort +9, Ref +7, Will +5
+HP 30
+Speed 25 feet, swim 25 feet
+Melee [one-action] jaws +10, Damage 1d10+4 piercing plus Grab
+Melee [one-action] tail +10 (agile), Damage 1d6+4 bludgeoning
+Aquatic Ambush [one-action] When hiding in water, the crocodile can move up to 35 feet, traveling on water and land, then make a jaws Strike against a creature that is unaware of it. The crocodile gains a +2 circumstance bonus to the attack roll.
+Camouflage [one-action] The crocodile can change its color to match its surroundings. It can use this action to Hide up to a creature that doesn’t see it and doesn’t know where it is and make a Strike against that creature. The creature is flat-footed against the attack.
+Death Roll [one-action] (attack) The crocodile tucks its legs and rolls rapidly, twisting its victim. It makes a jaws Strike with a +2 circumstance bonus to the attack roll against a creature it has grabbed. If it hits, it also knocks the creature prone. If it fails, it releases the creature.
+Grab [one-action] After succeeding at a jaws Strike, the crocodile can use this action to automatically give the target the grabbed condition until the end of the crocodile’s next turn.
 ```
 
 ### Generate an NPC block with GPT
