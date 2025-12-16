@@ -1,6 +1,6 @@
 const CONSTANTS = Object.freeze({
   module: {
-    name: 'foundry-vtt-content-parser',
+    name: 'foundryvtt-importer',
     title: 'Content Parser',
   },
 });

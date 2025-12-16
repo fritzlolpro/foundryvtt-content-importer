@@ -7,21 +7,36 @@ import { processItemInput } from './item/handleInput';
 import { processActorInput } from './actor/handleInput';
 import { processInputJSON } from './journal/routes';
 
-Hooks.on('renderSidebarTab', (settings: Settings) => {
+// Hook for each specific directory tab render event
+Hooks.on('renderJournalDirectory', (app: any, html: JQuery) => {
   if (!(game as Game)?.user?.isGM) return;
   const config = Config._load();
   if (config.journalImporter) {
-    renderSidebarButtons(settings, 'journal', processInputJSON);
+    renderSidebarButtons(app, 'journal', processInputJSON);
   }
-  if (config.tableImporter) {
-    renderSidebarButtons(settings, 'tables', processTableJSON);
-  }
-  if (config.actorImporter) {
-    renderSidebarButtons(settings, 'actors', processActorInput);
-  }
+});
 
+Hooks.on('renderRollTableDirectory', (app: any, html: JQuery) => {
+  if (!(game as Game)?.user?.isGM) return;
+  const config = Config._load();
+  if (config.tableImporter) {
+    renderSidebarButtons(app, 'tables', processTableJSON);
+  }
+});
+
+Hooks.on('renderActorDirectory', (app: any, html: JQuery) => {
+  if (!(game as Game)?.user?.isGM) return;
+  const config = Config._load();
+  if (config.actorImporter) {
+    renderSidebarButtons(app, 'actors', processActorInput);
+  }
+});
+
+Hooks.on('renderItemDirectory', (app: any, html: JQuery) => {
+  if (!(game as Game)?.user?.isGM) return;
+  const config = Config._load();
   if (config.itemImporter) {
-    renderSidebarButtons(settings, 'items', processItemInput);
+    renderSidebarButtons(app, 'items', processItemInput);
   }
 });
 

@@ -5,12 +5,12 @@ const { copy } = require('@guanghechen/rollup-plugin-copy');
 const staticFiles = ['styles', 'templates', 'lang', 'module.json'];
 
 const sourceDirectory = './src';
-const distDirectory = './dist';
+const distDirectory = './';
 
 module.exports = {
   input: 'src/module/foundryvtt-importer.ts',
   output: {
-    dir: 'dist/module',
+    dir: './module',
     format: 'es',
     sourcemap: true,
   },
