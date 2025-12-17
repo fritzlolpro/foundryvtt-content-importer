@@ -1,4 +1,7 @@
 # Foundry VTT Content Parser
+This is a fork of https://foundryvtt.com/packages/foundry-vtt-content-parser/ updated to v13 and with pathfinder 2e support.
+
+
 ## Usage
 
 1. Press import button in tab you are trying to import
