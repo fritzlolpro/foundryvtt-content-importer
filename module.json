@@ -17,10 +17,10 @@
       "telegram": "@Fritzlolpro"
     }
   ],
-  "minimumCoreVersion": "11",
+  "minimumCoreVersion": "13",
   "compatibleCoreVersion": "13",
   "compatibility": {
-    "minimum": "11",
+    "minimum": "13",
     "verified": "13",
     "maximum": "13"
   },
