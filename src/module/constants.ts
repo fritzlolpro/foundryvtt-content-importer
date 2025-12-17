@@ -1,7 +1,7 @@
 const CONSTANTS = Object.freeze({
   module: {
-    name: 'foundryvtt-importer',
-    title: 'Content Parser',
+    name: 'foundryvtt-content-importer',
+    title: 'Content Importer',
   },
 });
 

@@ -54,14 +54,14 @@ ln -s <PROJECT-DIR> foundryvtt-importer
 For example, the command on my system looks like so:
 
 ```sh
-ln -s ~/codespace/foundryvtt-importer foundryvtt-importer
+ln -s ~/codespace/foundryvtt-importer foundryvtt-content-importer
 ```
 
 You should now be able to view, enable, and use the module from within Foundry.
 
 ##### For Windows Development
 
-Since Windows does not support symlinks in the same way, clone the repository directly into your Foundry modules directory (e.g., `FoundryVTT/Data/modules/foundryvtt-importer`). The build artifacts (`module/`, `styles/`, `templates/`, `lang/`) will be placed in the root of the cloned repository, which is now inside the modules folder. Foundry will detect and load the module directly.
+Since Windows does not support symlinks in the same way, clone the repository directly into your Foundry modules directory (e.g., `FoundryVTT/Data/modules/foundryvtt-content-importer`). The build artifacts (`module/`, `styles/`, `templates/`, `lang/`) will be placed in the root of the cloned repository, which is now inside the modules folder. Foundry will detect and load the module directly.
 
 For production builds, use `npm run build:prod` which outputs to `dist/`.
 

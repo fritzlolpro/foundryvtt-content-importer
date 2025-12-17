@@ -89,7 +89,7 @@ gulp link            # Symlink to Foundry user data (requires foundryconfig.json
 **Build flow:**
 1. Rollup compiles TypeScript ([rollup.config.js](../rollup.config.js))
 2. Gulp copies static files (templates, lang, styles) from `src/` to root
-3. Output: `module/foundryvtt-importer.js` + copied assets
+3. Output: `module/foundryvtt-content-importer.js` + copied assets
 
 **Critical:** Files in root (`module/`, `templates/`, `styles/`, `lang/`) are build artifacts - edit sources in `src/` only
 
@@ -111,7 +111,7 @@ npm run test:watch    # Watch mode
 
 ## Foundry VTT Integration
 
-**Module initialization** in [src/module/foundryvtt-importer.ts](../src/module/foundryvtt-importer.ts):
+**Module initialization** in [src/module/foundryvtt-content-importer.ts](../src/module/foundryvtt-content-importer.ts):
 - `Hooks.on('renderSidebarTab')` → Adds import buttons to sidebar
 - Settings in [src/module/settings.ts](../src/module/settings.ts) enable/disable importers per type
 

@@ -1,6 +1,6 @@
 {
-  "id": "foundryvtt-importer",
-  "name": "foundryvtt-importer",
+  "id": "foundryvtt-content-importer",
+  "name": "foundryvtt-content-importer",
   "title": "Foundry VTT Content Importer",
   "description": "import foundry entities from external sources",
   "version": "0.3.00",
