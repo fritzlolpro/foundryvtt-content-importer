@@ -3,7 +3,7 @@
   "name": "Foundry VTT Content Parser",
   "version": "0.2.50",
   "description": "",
-  "license": "",
+  "license": "GPL-3.0",
   "homepage": "",
   "repository": {
     "type": "git",
