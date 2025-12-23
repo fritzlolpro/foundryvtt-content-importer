@@ -21,7 +21,7 @@ const stylesExtension = "css";
 const sourceFileExtension = "ts";
 const staticFiles = ["assets", "fonts", "lang", "packs", "templates", "module.json"];
 const getDownloadURL = (version) =>
-  `https://github.com/fritzlolpro/foundryvtt-importer/releases/download/v${version}/module.zip`;
+  `https://github.com/fritzlolpro/foundryvtt-content-importer/releases/download/v${version}/module.zip`;
 
 /********************/
 /*      BUILD       */

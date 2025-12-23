@@ -8,7 +8,7 @@ const sourceDirectory = './src';
 const distDirectory = './';
 
 module.exports = {
-  input: 'src/module/foundryvtt-importer.ts',
+  input: 'src/module/foundryvtt-content-importer.ts',
   output: {
     dir: './module',
     format: 'es',

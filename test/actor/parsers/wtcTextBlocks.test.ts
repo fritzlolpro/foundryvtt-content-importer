@@ -943,7 +943,7 @@ describe('Parse Text', () => {
   });
 
   it('should parse sphythronar sac', () => {
-    // test for issue https://github.com/fritzlolpro/foundryvtt-importer/issues/25
+    // test for issue https://github.com/fritzlolpro/foundryvtt-content-importer/issues/25
     const actorText = SPYTHRONAR_SAC;
     const actor = textToActor(actorText);
     expect(actor.name).toBe('Spythronar Sac');

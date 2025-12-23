@@ -101,7 +101,7 @@ tool which attempts to process modules that may be found in DMs guild.
 
 ## Have an issue?
 
-Open an issue [here](https://github.com/fritzlolpro/foundryvtt-importer/issues) and follow the template.
+Open an issue [here](https://github.com/fritzlolpro/foundryvtt-content-importer/issues) and follow the template.
 
 Sample data that I have for testing parsers is limited. If you have
 sample data that is not working, please open an issue and I can add it

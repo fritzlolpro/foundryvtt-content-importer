@@ -48,13 +48,13 @@ following command. Run the command from the modules directory of your dev
 foundry installation:
 
 ```sh
-ln -s <PROJECT-DIR> foundryvtt-importer
+ln -s <PROJECT-DIR> foundryvtt-content-importer
 ```
 
 For example, the command on my system looks like so:
 
 ```sh
-ln -s ~/codespace/foundryvtt-importer foundryvtt-content-importer
+ln -s ~/codespace/foundryvtt-content-importer foundryvtt-content-importer
 ```
 
 You should now be able to view, enable, and use the module from within Foundry.
